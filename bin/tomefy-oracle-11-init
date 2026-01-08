@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source $HOME/.oracle-11/.env
+
+podman run -d \
+    --name="$CONTAINER_NAME" \
+    -p $HOST_PORT:$CONTAINER_PORT \
+    -e ORACLE_PASSWORD=$ROOT_PASSWORD \
+    -v $DATA_DIR:/u01/app/oracle/oradata:Z \
+    --replace \
+    gvenzl/oracle-xe:11-full
