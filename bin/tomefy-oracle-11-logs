@@ -2,4 +2,4 @@
 
 source $HOME/.oracle-11/.env
 
-podman logs $CONTAINER_NAME 
+podman logs $CONTAINER_NAME "$@"

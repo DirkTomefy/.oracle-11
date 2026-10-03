@@ -2,4 +2,4 @@
 
 source $HOME/.oracle-11/.env
 
-podman exec -it $CONTAINER_NAME sqlplus / as sysdba
+podman exec -it $CONTAINER_NAME sqlplus "sys/oracle as sysdba"

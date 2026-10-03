@@ -5,7 +5,7 @@ source $HOME/.oracle-11/.env
 podman run -d \
     --name="$CONTAINER_NAME" \
     -p $HOST_PORT:$CONTAINER_PORT \
-    -e ORACLE_PASSWORD=$ROOT_PASSWORD \
-    -v $DATA_DIR:/u01/app/oracle/oradata:Z \
+    -p $ORACLE_WEB_MANAGER_PORT:8080 \
+    -v $IMPORT_DIR:/import:z \
     --replace \
-    gvenzl/oracle-xe:11-full
+    obsmartsoft/orcl.db.11g
