@@ -2,4 +2,10 @@
 
 source $HOME/.oracle-11/.env
 
-podman start $CONTAINER_NAME
+podman start "$CONTAINER_NAME"
+
+# Correctif DNS : /etc/hosts est régénéré à chaque démarrage, on réajoute l'entrée IPv6
+podman exec -u root "$CONTAINER_NAME" bash -c 'grep -q "^::1 $(hostname)" /etc/hosts || echo "::1 $(hostname)" >> /etc/hosts'
+
+echo "Oracle démarré (correctif DNS appliqué). Attends 'Database ready to use' :"
+echo "  podman logs -f $CONTAINER_NAME"
